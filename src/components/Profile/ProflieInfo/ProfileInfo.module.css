@@ -1,0 +1,27 @@
+.item img {
+    width: 1000px;
+}
+
+.descriptionBlock {
+    padding: 10px;
+    display: flex;
+}
+
+.descriptionBlockUser {
+  display: block;
+  padding-left: 20px;
+}
+
+.aboutMe {
+  margin: 0;
+}
+
+.userPhoto {
+  width: 200px;
+  height: 200px;
+}
+
+.blockInfo {
+  padding: 0;
+  list-style-type: none;
+}
