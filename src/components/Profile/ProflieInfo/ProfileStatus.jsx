@@ -1,25 +1,36 @@
 import React from 'react';
-// import Preloader from '../../common/Preloader/Preloader';
-// import s from './ProfileInfo.module.css';
-// import userPhoto from "../../../img/avatar.png";
+
 
 class ProfileStatus extends React.Component {
 
   state = {
     editMode: false,
-    title: 'Yo'
+    status: this.props.status
   }
 
-  activeteEditMode() {
+  activeteEditMode = () => {
     this.setState ({
       editMode: true
     });
   }
 
-  deactiveteEditMode() {
+  deactiveteEditMode = () => {
     this.setState ({
       editMode: false
     });
+    this.props.updateStatus(this.state.status);
+  }
+
+  onStatusChange = (e) => {
+    this.setState({
+      status: e.target.value
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.status !== this.props.status) {
+      this.setState({status: this.props.status})
+    }
   }
 
   render() {
@@ -27,12 +38,12 @@ class ProfileStatus extends React.Component {
       <div>
         {!this.state.editMode &&
           <div>
-            <span onDoubleClick={this.activeteEditMode.bind(this)}>{this.props.status}</span>
+            <span onDoubleClick={this.activeteEditMode}>{this.props.status || 'Status'}</span>
           </div>
         }
         {this.state.editMode &&
           <div>
-            <input autoFocus={true} onBlur={this.deactiveteEditMode.bind(this)} value={this.props.status} />
+            <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactiveteEditMode} value={this.state.status} />
           </div>
         }
       </div>
