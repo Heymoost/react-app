@@ -2,7 +2,7 @@ import React from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
 import userPhoto from "../../../img/avatar.png";
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -14,7 +14,7 @@ const ProfileInfo = (props) => {
       {/* <div className={s.item}>
         <img src='https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg' alt='' />
       </div> */}
-      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+      <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
       <div className={s.descriptionBlock}>
         <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto} className={s.userPhoto} alt="" />
         <div className={s.descriptionBlockUser}>

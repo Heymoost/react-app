@@ -1,9 +1,18 @@
+.btnFollowed {
+  margin-top: 10px;
+  padding: 0 15px 0 15px;
+  height: 20px;
+  color: #2a6aff;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
 .userPhoto {
   width: 100px;
   height: 100px;
 }
 
-.selectedPage {
-  color: #2fff00;
-  font-weight: bold;
+.userText {
+  color: #ffffff;
 }

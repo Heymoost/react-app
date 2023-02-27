@@ -1,10 +1,11 @@
 .item img {
-    width: 1000px;
+  width: 1000px;
 }
 
 .descriptionBlock {
-    padding: 10px;
-    display: flex;
+  display: flex;
+  padding-top: 10px;
+  color: #ffffff;
 }
 
 .descriptionBlockUser {
@@ -24,4 +25,15 @@
 .blockInfo {
   padding: 0;
   list-style-type: none;
+}
+
+.statusTittle {
+  color: #ffffff;
+}
+
+.statusInput {
+  width: 197px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
 }

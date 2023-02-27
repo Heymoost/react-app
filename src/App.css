@@ -5,14 +5,16 @@
   "n c";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
-  /* grid-gap: 10px; */
   width: 1440px;
   margin: 0 auto;
 }
 
 .app-wrapper-content {
-  height: 750px;
+  padding: 20px;
+  margin: 5px 0 0 5px;
+  height: 900px;
   grid-area: c;
-  background-color: coral;
+  background-color: #2a6aff;
+  border-radius: 10px;
 }
 
