@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import { Route, Routes } from 'react-router-dom';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderConteiner from './components/Header/HeaderContainer';
-import Login from './components/Login/login';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import store from './redux/redux-store';
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
+const Login = React.lazy(() => import('./components/Login/login'));
 
 
 class App extends React.Component {
@@ -18,24 +22,26 @@ class App extends React.Component {
   }
 
   render() {
-    if(!this.props.initialized) {
+    if (!this.props.initialized) {
       return <Preloader />
     }
 
     return (
-        <div className='app-wrapper'>
-          <HeaderConteiner />
-          <Navbar />
-          <div className='app-wrapper-content'>
+      <div className='app-wrapper'>
+        <HeaderConteiner />
+        <Navbar />
+        <div className='app-wrapper-content'>
+          <Suspense fallback={<div><Preloader /></div>}>
             <Routes>
-              <Route path='/profile/' element={<ProfileContainer  />} />
-              <Route path='/profile/:userId' element={<ProfileContainer  />} />
+              <Route path='/profile/' element={<ProfileContainer />} />
+              <Route path='/profile/:userId' element={<ProfileContainer />} />
               <Route path='/dialogs/' element={<DialogsContainer />} />
               <Route path='/users/' element={<UsersContainer />} />
               <Route path='/login/' element={<Login />} />
             </Routes>
-          </div>
+          </Suspense>
         </div>
+      </div>
     );
   }
 }
@@ -44,4 +50,17 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-export default connect(mapStateToProps, {initializeApp})(App);
+let AppContainer = connect(mapStateToProps, { initializeApp })(App);
+
+const MainApp = (props) => {
+  return (
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppContainer />
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+)};
+
+export default MainApp;

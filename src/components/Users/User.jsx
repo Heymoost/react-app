@@ -17,8 +17,8 @@ let User = ({ user, followingInProgress, unfollow, follow }) => {
         <div className={styles.userText}>{user.status}</div>
       </span>
       <span>
-        <div className={styles.userText}>{'user.location.country'}</div>
-        <div className={styles.userText}>{'user.location.city'}</div>
+        {/* <div className={styles.userText}>{'user.location.country'}</div>
+        <div className={styles.userText}>{'user.location.city'}</div> */}
       </span>
     </span>
     <span>

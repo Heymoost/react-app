@@ -2,11 +2,13 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://heymoost.github.io/my-app-deploy",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
@@ -46,5 +48,9 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(react-leaflet|@react-leaflet|d3-*|axios))"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0",
+    "react-test-renderer": "^18.2.0"
   }
 }
