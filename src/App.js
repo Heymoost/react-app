@@ -53,13 +53,13 @@ let AppContainer = connect(mapStateToProps, { initializeApp })(App);
 
 const MainApp = (props) => {
   return (
-    <React.StrictMode>
-      <HashRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter basename={process.env.PUBLIC_URL}>
+      <React.StrictMode>
         <Provider store={store}>
           <AppContainer />
         </Provider>
-      </HashRouter>
-    </React.StrictMode>
+      </React.StrictMode>
+    </HashRouter>
   )
 };
 
