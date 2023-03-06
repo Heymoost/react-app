@@ -1,12 +1,13 @@
 import React, { Suspense } from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import HeaderConteiner from './components/Header/HeaderContainer';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import store from './redux/redux-store';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
@@ -54,11 +55,11 @@ let AppContainer = connect(mapStateToProps, { initializeApp })(App);
 const MainApp = (props) => {
   return (
     <React.StrictMode>
-      <HashRouter basename={process.env.PUBLIC_URL}>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Provider store={store}>
           <AppContainer />
         </Provider>
-      </HashRouter>
+      </BrowserRouter>
     </React.StrictMode>
   )
 };
