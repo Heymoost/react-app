@@ -54,13 +54,14 @@ let AppContainer = connect(mapStateToProps, { initializeApp })(App);
 
 const MainApp = (props) => {
   return (
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <AppContainer />
+    <React.StrictMode>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Provider store={store}>
+          <AppContainer />
+        </Provider>
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>
-)};
+    </React.StrictMode>
+  )
+};
 
 export default MainApp;
