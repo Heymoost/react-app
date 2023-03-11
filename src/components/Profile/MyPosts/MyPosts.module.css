@@ -24,7 +24,7 @@
   margin-top: 10px;
   padding: 0 15px 0 15px;
   height: 25px;
-  color: #2a6aff;
+  color: #333333;
   background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -32,7 +32,7 @@
 
 .btnMessage:hover {
   color: #ffffff;
-  background-color: #2a6aff;
+  background-color: #333333;
   border: 1px solid #ffffff;
   cursor: pointer;
 }

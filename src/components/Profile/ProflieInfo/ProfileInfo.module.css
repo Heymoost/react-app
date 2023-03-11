@@ -1,25 +1,103 @@
+b {
+ color: #939393;
+}
+
 .item img {
   width: 1000px;
 }
 
 .descriptionBlock {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+  "p a c";
+  grid-template-columns: 220px auto auto;
   padding-top: 10px;
   color: #ffffff;
-}
-
-.descriptionBlockUser {
-  display: block;
-  padding-left: 20px;
 }
 
 .aboutMe {
   margin: 0;
 }
 
+.photoBlock {
+  position: relative;
+}
+
 .userPhoto {
   width: 200px;
   height: 200px;
+}
+
+.userPhotoBlock {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.userPhotoBlock:hover .userPhotoHover {
+  display: block;
+}
+
+.userPhotoBlock:hover .imgReload {
+  display: block;
+}
+
+.userPhotoHover {
+  position: absolute;
+  display: none;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.6);
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.imgReload {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+
+}
+
+.inputBlock{
+	display: inline-block;
+}
+
+.inputFile {
+  position: absolute;
+  top: 0;
+}
+
+.inputBlock span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	display: inline-block;
+	cursor: pointer;
+	box-sizing: border-box;
+	border: none;
+	margin: 0;
+  z-index: 15;
+}
+.inputBlock input[type=file] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 .blockInfo {

@@ -2,18 +2,27 @@
   grid-area: n;
   padding: 20px;
   margin: 5px 5px 0 0;
-  background-color: #2a6aff;
+  background-color: #333333;
   border-radius: 10px;
 }
 
-.item {
-  padding-bottom: 10px;
-}
-
 .item a {
+  display: flex;
+  padding: 5px 0 5px 10px ;
+  margin-bottom: 5px;
   color: white;
   text-decoration: none;
+  border: 1px solid transparent;
 }
+
+
+.item a:hover {
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
 
 .item a.activeLink {
   color: red;

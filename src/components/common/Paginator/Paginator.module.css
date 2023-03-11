@@ -2,23 +2,7 @@
   flex: 0 0 auto;
 }
 
-button {
-  margin: 0 5px 10px 0;
-  color: #2a6aff;
-  cursor: pointer;
-  background-color: #ffffff;
-  border: 1px solid transparent;
-  border-radius: 5px;
-}
-
-button:hover {
-  color: #ffffff;
-  background-color: #2a6aff;
-  border: 1px solid #ffffff;
-  cursor: pointer;
-}
-
 .selectedPage {
-  color: #2fff00;
+  color: #ff0000;
   font-weight: bold;
 }
