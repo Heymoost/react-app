@@ -11,6 +11,7 @@
 
 .formSummaryError {
   display: inline-block;
+  width: 270px;
   padding: 5px;
   color: red;
   border: 1px solid red;

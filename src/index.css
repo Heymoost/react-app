@@ -1,0 +1,23 @@
+body {
+  height: 100%;
+  margin: 0;
+  background-color: #222222;
+}
+
+button {
+  margin: 0 5px 10px 0;
+  color: #333333;
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0 15px 0 15px;
+  height: 25px;
+}
+
+button:hover {
+  color: #ffffff;
+  background-color: #333333;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}

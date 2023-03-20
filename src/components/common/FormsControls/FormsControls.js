@@ -5,7 +5,7 @@ const FormControl = ({input, meta, child, ...props}) => {
   const hasError = meta.touched && meta.error;
 
   return (
-    <div className={style.formControls + " " + (hasError ? style.error : "")}>
+    <div className={style.formControl + " " + (hasError ? style.error : "")}>
       <div>
         {props.children}
       </div>

@@ -6,11 +6,20 @@ b {
   width: 1000px;
 }
 
+.userBlock {
+  display: grid;
+  grid-template-areas:
+  "p a";
+  grid-template-columns: 220px auto;
+  padding-top: 10px;
+  color: #ffffff;
+}
+
 .descriptionBlock {
   display: grid;
   grid-template-areas:
   "p a c";
-  grid-template-columns: 220px auto auto;
+  grid-template-columns: auto auto 60px;
   padding-top: 10px;
   color: #ffffff;
 }
@@ -100,8 +109,15 @@ b {
   overflow: hidden;
 }
 
-.blockInfo {
+.blockContacts {
+  margin: 0;
   padding: 0;
+}
+
+
+.blockInfo {
+  padding: 10px 0 0 10px ;
+  margin: 0;
   list-style-type: none;
 }
 

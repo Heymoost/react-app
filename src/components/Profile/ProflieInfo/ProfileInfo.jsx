@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
 import userPhoto from "../../../img/avatar.png";
 import photoReload from "../../../img/reload.png";
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
+import ProfileDataForm from './ProfileDataForm';
+
 
 const ProfileInfo = (props) => {
+
+  let [editMode, setEditMode] = useState(false);
+
   if (!props.profile) {
     return <Preloader />
   }
@@ -16,10 +21,16 @@ const ProfileInfo = (props) => {
     }
   }
 
+  const onSubmit = (formData) => {
+    props.saveProfile(formData).then(() => {
+      setEditMode(false);
+    })
+  }
+
   return (
     <div>
       <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
-      <div className={s.descriptionBlock}>
+      <div className={s.userBlock}>
         <div className={s.userPhotoBlock}>
           <img src={props.profile.photos.large != null ? props.profile.photos.large : userPhoto} className={s.userPhoto} alt="" />
           <div className={s.uploadInput}>{props.isOwner &&
@@ -33,43 +44,36 @@ const ProfileInfo = (props) => {
           }
           </div>
         </div>
-        <div className={s.blockAbout}>
-          <b>About me</b>
-          <ul className={s.blockInfo}>
-            {props.profile.aboutMe &&
-              <li><p className={s.aboutMe}>{props.profile.aboutMe}</p></li>}
-            <li><b>Name:</b> {props.profile.fullName}</li>
-            {props.profile.contacts.facebook &&
-              <li><b>Full name:</b> {props.profile.fullName}</li>}
-            <li><b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}</li>
-            {props.profile.lookingForAJob &&
-              <li><b>My professional skills:</b> {props.profile.lookingForAJobDescription}</li>}
-          </ul>
-        </div>
-        <div className={s.blockContacts}>
-          <b>Contacts</b>
-          <ul className={s.blockInfo}>
-            {props.profile.contacts.facebook &&
-              <li><b>Facebook:</b> {props.profile.contacts.facebook}</li>}
-            {props.profile.contacts.website &&
-              <li><b>Website:</b> {props.profile.contacts.website}</li>}
-            {props.profile.contacts.vk &&
-              <li><b>VK:</b> {props.profile.contacts.vk}</li>}
-            {props.profile.contacts.twitter &&
-              <li><b>Twitter:</b> {props.profile.contacts.twitter}</li>}
-            {props.profile.contacts.instagram &&
-              <li><b>Instagram:</b> {props.profile.contacts.instagram}</li>}
-            {props.profile.contacts.youtube &&
-              <li><b>YouTube:</b> {props.profile.contacts.youtube}</li>}
-            {props.profile.contacts.github &&
-              <li><b>GitHub:</b> {props.profile.contacts.github}</li>}
-            {props.profile.contacts.mainLink &&
-              <li><b>MainLink:</b> {props.profile.contacts.mainLink}</li>}
-          </ul>
-        </div>
+        {editMode ? <ProfileDataForm initialValues={props.profile} profile={props.profile} onSubmit={onSubmit} /> : <ProfileData goToEditMode={() => { setEditMode(true) }} profile={props.profile} isOwner={props.isOwner} />}
+
       </div>
     </div>
   )
+}
+
+const ProfileData = ({ profile, isOwner, goToEditMode }) => {
+  return <div className={s.descriptionBlock}>
+    <div className={s.blockAbout}>
+      <b>About me</b>
+      <ul className={s.blockInfo}>
+        <li><b>Full name:</b> {profile.fullName}</li>
+        <li><b>About me:</b> {profile.aboutMe}</li>
+        <li><b>Looking for a job:</b> {profile.lookingForAJob ? "yes" : "no"}</li>
+        {profile.lookingForAJob &&
+          <li><b>My professional skills:</b> {profile.lookingForAJobDescription}</li>}
+      </ul>
+    </div>
+    <div>
+      <b>Contacts</b> <div className={s.blockInfo}>{Object.keys(profile.contacts).map(key => {
+        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
+      })}</div>
+    </div>
+    {isOwner && <div><button onClick={goToEditMode}>Edit</button></div>}
+  </div>
+}
+
+export const Contact = ({ contactTitle, contactValue }) => {
+  return <div className={s.blockContacts}><b>{contactTitle}</b>: {contactValue}</div>
 }
 
 
